@@ -1,0 +1,32 @@
+<div *ngIf="productList.length >0;else loading" class="container mt-5 pt-5 ">
+    <input type="text" placeholder="Search.." class="w-50 m-auto form-control my-3" [(ngModel)]="searchValue"/>
+      <div class="row gy-5 mt-2 ">
+          <div *ngFor="let product of productList | search : searchValue" class="col-lg-3 col-md-4">
+              <div class="product overflow-hidden p-3 ">
+               <div [routerLink]="['/productdetails',product._id]">
+                  <img [src]="product.imageCover"  class="w-100 " [alt]="product.title"/>
+                  <p class="text-main">{{product.category.name}}</p>
+                 <div class="d-flex justify-content-between ">
+                     <p>{{product.price}}EGP</p>
+                     <p >{{product.ratingsAverage}}
+                         <i class="fa-solid fa-star rating-color"></i>   
+                     </p>   
+                 </div> 
+               </div>
+               <span class="wishlist-icon" [class.in-wishlist]="wishlistStatus[product.id]">
+                <i id="icinWis" *ngIf="!wishlistStatus[product.id]" class="fa-solid fa-heart-crack fa-2x float-end text-main" (click)="addToMyWishlist(product._id)"></i>
+                <i id="icinWis" *ngIf="wishlistStatus[product.id]" class="fa-solid fa-heart-circle-check fa-2x float-end text-main" (click)="addToMyWishlist(product._id)"></i>
+              </span>
+                 
+              <button (click)="addToMyCart(product._id)" class="btn bg-main text-light w-100 "> Add to cart</button>
+               
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  <ng-template #loading>
+      <div class="vh-100  d-flex justify-content-center align-items-center">    
+   <i class="fa-solid fa-spinner fa-spin text-main fa-5x "></i>
+      </div>
+  </ng-template>

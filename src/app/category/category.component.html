@@ -1,0 +1,15 @@
+<section class="mt-5 pt-5">
+    <div *ngIf="categoryList.length >0 ;else loading" class="container">
+        <div class="row">
+            <div *ngFor="let category of categoryList " class="col-md-4 bg-light shadow  border-1 gy-3">
+                <img [src]="category.image" class="w-100" height="250"/>
+                <p class="text-main text-center fw-bold"> {{category.name}} </p>
+            </div>
+        </div>
+    </div>
+</section> 
+<ng-template #loading>
+    <div class="vh-100  d-flex justify-content-center align-items-center">    
+ <i class="fa-solid fa-spinner fa-spin text-main fa-5x "></i>
+    </div>
+</ng-template>

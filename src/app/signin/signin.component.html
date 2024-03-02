@@ -1,0 +1,46 @@
+<section>
+    <div class="container my-5 mt-5 pt-5  ">
+        <h1 class="text-main">Login Form</h1> 
+       <form [formGroup]="loginForm" (ngSubmit)="loginSubmit(loginForm)">
+        <div class="row gy-4">
+            <div class="col-md-8 m-auto bg-light shadow p-5 my-4">
+          
+                <div class="col-md-12">
+                    <label class="fw-bold" for="user_email">Email</label>
+                    <input formControlName="email" type="email" id="user_email" class="form-control">
+                    <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched">
+                        <p class="text-danger " *ngIf="loginForm.get('email')?.getError('required')">Email is required</p>
+                        <p class="text-danger" *ngIf="loginForm.get('email')?.getError('email')">Enter a valid email</p>    
+    
+                      </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label class="fw-bold" for="user_password">Password</label>
+                    <input formControlName="password" type="password" id="user_password" class="form-control">
+                    <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched">
+                        <p class="text-danger " *ngIf="loginForm.get('password')?.getError('required')">password is required</p>
+                        <p class="text-danger" *ngIf="loginForm.get('password')?.getError('pattern')">Enter a valid password</p>
+    
+    
+                      </div>
+                  </div>
+
+                  <div>
+                    <p *ngIf="errors" class="text-danger">{{errors}}</p>
+
+                    <button [disabled]="loginForm.invalid" class=" btn bg-main text-light float-end my-3" type="submit">Login
+                        <span *ngIf="isLoading"><i class="fa-solid fa-spinner fa-spin" ></i></span>
+                        </button>
+                        <a  class="text-main" routerLink="/forgetPassword">Reset Password...</a>
+                  </div>
+                  <div class="mt-2">
+                    <p class="text-muted">Don't have an account? <a [routerLink]="['/signup']" class="text-main">Register</a></p>
+                  </div>
+  
+            </div>
+           </div>
+       </form>
+      
+           </div> 
+</section>

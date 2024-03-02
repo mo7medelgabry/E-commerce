@@ -1,0 +1,21 @@
+<div class="container mt-5 pt-5  ">
+    <h1 class="text-main fw-bold">All Orders </h1>
+    <div class="card">
+        <div *ngFor="let item of cartItems ; let i = index"  class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <img [src]="item.product.imageCover" class="w-100"/>
+                </div>
+                <div class="col-md-9 d-flex justify-content-center align-items-center">
+                    <div>
+                        <h2 class="text-main fw-bold">Order Number: {{i+1}}</h2>
+                        <p>price: {{item.price}}</p>
+                        <p>Brand Name: {{item.product.brand.name}}</p>
+                        <!-- <p>{{item.product.title}}</p> -->
+                        <p>Count: {{item.count}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

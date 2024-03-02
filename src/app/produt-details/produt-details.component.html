@@ -1,0 +1,26 @@
+<div class="container mt-5 pt-5 ">
+    <div class="row my-5">
+        <div class="col-md-3">
+    <img [src]="productDetails?.imageCover" class="w-100" [alt]="productDetails?.title"/>
+        </div>
+        <div class="col-md-9">
+        <div class="layer d-flex flex-column justify-content-evenly h-100">
+            <div>
+                <h2 class="text-main">{{productDetails?.title}}</h2>
+                <p class="text-muted">{{productDetails?.description}}</p>
+            </div>
+            <div>
+                <p class="text-main">{{productDetails?.category?.name}}</p>
+                <div class="d-flex justify-content-between ">
+                    <p>{{productDetails?.price}}EGP</p>
+                    <p >{{productDetails?.ratingsAverage}}
+                        <i class="fa-solid fa-star rating-color"></i>   
+                    </p>   
+                </div>
+            </div>
+         
+            <button (click)="addToMyCart(productDetails._id)" class="btn bg-main text-light w-100 "> Add to cart</button>
+        </div>
+        </div>
+    </div>
+</div>

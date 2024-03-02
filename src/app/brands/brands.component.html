@@ -1,0 +1,33 @@
+
+<section class="mt-5 pt-5">
+    <div *ngIf="brandsList.length >0 ;else loading" class="container">
+        <div class="row">
+            <div   *ngFor="let brand of brandsList"   class="col-md-4 bg-light shadow gy-3 border-1 focus-ring-success">
+                <img (click)="toggle(brand)" [src]="brand.image" class="w-100"/>
+                <p class="text-main text-center fw-bold"> {{brand.name}} </p>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="closeDitels" *ngIf="details" (click)="toggle(null)" class=" fixed-top z-3 vh-100 d-flex justify-content-center align-items-center" [class.d-none]="visiable">
+    <div class="container " >
+        <div class=" w-50 m-auto">
+            <div class="bg-light rounded-4 text-end p-4">
+                <i class="fa-solid fa-circle-xmark fa-2x mb-2" (click)="toggle(null)"></i>
+                <div class="d-flex align-items-center border-4 border-top">
+                    <div class=" d-flex w-100 justify-content-between">
+                        <p class="fw-bold text-start text-main fa-2x d-flex align-items-center" >{{details.name}}</p>
+                        <div class="text-end">
+                            <img class="fw-bold m-auto fa-2x w-100" [src]="details.image"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+ </div>
+</div> 
+<ng-template #loading>x 
+    <div class="vh-100  d-flex justify-content-center align-items-center">    
+ <i class="fa-solid fa-spinner fa-spin text-main fa-5x "></i>
+    </div>
+</ng-template>

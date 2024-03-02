@@ -1,0 +1,66 @@
+<nav
+    class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#"> <i class="fa-solid fa-cart-shopping text-success "></i> <span class="mx-3 fw-bold ">FreshCart</span></a>
+        <button
+            class="navbar-toggler d-lg-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul *ngIf="isLogin" class="navbar-nav me-auto mt-2 mt-lg-0">
+             
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="isActive" routerLink="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="isActive" routerLink="/brands">Brands</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="isActive" routerLink="/products">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="isActive" routerLink="/category">Ctegory</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="isActive" routerLink="/wishlist">WishList</a>
+                </li>  
+                
+                
+               
+
+               
+            </ul>
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link position-relative" routerLinkActive="isActive" routerLink="/mycart">
+                    <i class="fas fa-cart-shopping text-main"></i>
+                  <span class="badge bg-danger  text-light position-absolute top-0 start-50">{{cartNumber}}</span>
+                </a>
+                </li>
+              
+              <li  *ngIf="!isLogin" class="nav-item">
+             <a class="nav-link " routerLinkActive="isActive" routerLink="/signin">Signin</a>
+              </li>
+              <li  *ngIf="!isLogin" class="nav-item">
+                <a class="nav-link " routerLinkActive="isActive" routerLink="/signup">SignUp</a>
+                 </li>
+                 <li   *ngIf="isLogin"class="nav-item">
+                    <a (click)="logout()" class="nav-link mx-3 ">Log Out</a>
+                     </li>
+                     <li class="nav-item d-flex  justify-content-center  align-items-center  ">
+                        <i class="fa-brands fa-facebook text-main"></i>
+                        <i class="fa-brands fa-twitter mx-3 text-main "></i>
+                        <i class="fa-brands fa-linkedin text-main"></i>
+                      </li>
+            </ul>
+           
+        </div>
+    </div>
+</nav>
